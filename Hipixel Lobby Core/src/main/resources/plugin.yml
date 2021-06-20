@@ -7,7 +7,7 @@ commands:
 
   gamemode:
     description: change gamemodes
-    aliases: [ gm ]
+    aliases: [gm]
     usage: /<command> <survival|creative|adventure|spectator> [player]
 
   creative:
@@ -30,10 +30,18 @@ commands:
     aliases: [gmsp]
     usage: /<command> [player]
 
+  help:
+    description: change gamemodes
+    aliases: [?]
+    usage: /<command> [player]
+
 permissions:
-  hipixelcore.gamemodes.creative:
+  hipixelcore.gamemodes:
     description: Change Gamemode permissions
     default: op
-  hipixelcore.gamemodes.creative.other:
+  hipixelcore.gamemodes.other:
     description: Change Gamemode permissions
+    default: op
+  hipixelcore.pluginhider.bypass:
+    description: Make u able to see plugins
     default: op
