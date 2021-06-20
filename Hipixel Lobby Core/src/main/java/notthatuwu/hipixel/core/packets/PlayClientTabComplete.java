@@ -4,6 +4,7 @@ import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.events.PacketAdapter;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.events.PacketEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
 public class PlayClientTabComplete extends PacketAdapter {
@@ -12,6 +13,7 @@ public class PlayClientTabComplete extends PacketAdapter {
     }
 
     public void onPacketReceiving(PacketEvent event) {
+        if(!Bukkit.getPluginManager().isPluginEnabled("ProtocolLib"))return;
         PacketType packetType = event.getPacketType();
         if (packetType.equals(PacketType.Play.Client.TAB_COMPLETE)) {
             if (event.getPlayer().hasPermission("hipixelcore.pluginhider.bypass"))

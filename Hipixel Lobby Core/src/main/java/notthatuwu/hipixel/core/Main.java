@@ -5,11 +5,14 @@ import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketListener;
 import notthatuwu.hipixel.core.command.CommandsLoader;
 import notthatuwu.hipixel.core.packets.PlayClientTabComplete;
+import notthatuwu.hipixel.core.scorebord.LobbyScoreboard;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,19 +23,22 @@ public class Main extends JavaPlugin implements Listener {
     public static Main instance;
     public final Logger log = getLogger();
 
+
     @Override
     public void onEnable() {
         instance = this;
         CommandsLoader commandsLoader = new CommandsLoader();
         commandsLoader.loadCommand(this);
+
+        //Scoreborad
+        getServer().getPluginManager().registerEvents(new LobbyScoreboard(), this);
+
         //Anti Plugin Leak
         getServer().getPluginManager().registerEvents(this, this);
         ProtocolLibrary.getProtocolManager().addPacketListener((PacketListener)new PlayClientTabComplete((Plugin)this, new PacketType[] { PacketType.Play.Client.TAB_COMPLETE }));
         log.info("Core Loaded");
         super.onEnable();
     }
-
-
 
     // Anti Plugins steal
     @EventHandler(priority = EventPriority.LOWEST)
@@ -50,7 +56,10 @@ public class Main extends JavaPlugin implements Listener {
         || event.getMessage().toLowerCase().startsWith("/bukkit:help")
         || event.getMessage().toLowerCase().startsWith("/icanhasbukkit")
         || event.getMessage().toLowerCase().startsWith("/pl")
-        || event.getMessage().toLowerCase().startsWith("/plugins")){
+        || event.getMessage().toLowerCase().startsWith("/plugins")
+        || event.getMessage().toLowerCase().startsWith("/help")
+        || event.getMessage().toLowerCase().startsWith("/?")
+        ){
             event.setCancelled(true);
             event.getPlayer().sendMessage(" \n" + ChatColor.GREEN + "-------------------" + ChatColor.YELLOW + ChatColor.BOLD + " Hipixel " + ChatColor.RESET + ChatColor.GREEN + "-------------------"
             + "\n" + ChatColor.GOLD + "This server is using Custom/own plugins."

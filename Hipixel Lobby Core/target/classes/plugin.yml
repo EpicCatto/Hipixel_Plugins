@@ -2,7 +2,8 @@ name: HipixelCore
 main: notthatuwu.hipixel.core.Main
 version: 0.0.1
 author: NotThatUwU
-
+depend:
+  - ProtocolLib
 commands:
 
   gamemode:
@@ -28,11 +29,6 @@ commands:
   spectator:
     description: change gamemodes
     aliases: [gmsp]
-    usage: /<command> [player]
-
-  help:
-    description: change gamemodes
-    aliases: [?]
     usage: /<command> [player]
 
 permissions:
