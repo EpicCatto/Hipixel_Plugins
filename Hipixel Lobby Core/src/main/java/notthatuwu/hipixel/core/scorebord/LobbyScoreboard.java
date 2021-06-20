@@ -2,6 +2,7 @@ package notthatuwu.hipixel.core.scorebord;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import notthatuwu.hipixel.core.Main;
+import notthatuwu.hipixel.core.utils.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -31,7 +32,7 @@ public class LobbyScoreboard implements Listener {
                 score.setScore(10);
                 Score score1 = objective.getScore(translateColor("&rOnline Players&7: &a" + placeholders(e.getPlayer(), "%server_online%")));
                 score1.setScore(9);
-                Score score2 = objective.getScore(translateColor("&rYour Rank&7: " + placeholders(e.getPlayer(), "%luckperms_highest_group_by_weight%")));
+                Score score2 = objective.getScore(translateColor("&rYour Rank&7: " + ChatUtil.formatRole(placeholders(e.getPlayer(), "%luckperms_highest_group_by_weight%"))));
                 score2.setScore(8);
                 Score score3 = objective.getScore(" ");
                 score3.setScore(7);
