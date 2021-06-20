@@ -1,5 +1,6 @@
 package notthatuwu.hipixel.core.command.commands.gamemodes;
 
+import notthatuwu.hipixel.core.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -35,13 +36,17 @@ public class CommandGamemodeSP implements CommandExecutor {
                 player.sendMessage(ChatColor.RED + "Sorry buddy but seem like you don't have permission to do that.");
             }
         } else {
-            Player player2 = Bukkit.getPlayer(args[0]);
-            if (player2 == null) {
-                sender.sendMessage(ChatColor.RED + "That player is offline");
-                return true;
+            if (!args[0].isEmpty()){
+                Player player2 = Bukkit.getPlayer(args[0]);
+                if (player2 == null) {
+                    sender.sendMessage(ChatColor.RED + "That player is offline");
+                    return true;
+                }
+                player2.setGameMode(GameMode.SPECTATOR);
+                sender.sendMessage(ChatColor.GREEN + "Successfully change " + ChatColor.GOLD + player2.getName() + ChatColor.GREEN + " gamemode to " + ChatColor.GOLD + player2.getGameMode());
+            }else {
+                Main.instance.log.info("Wrong args");
             }
-            sender.sendMessage(ChatColor.GREEN + "Successfully change " + ChatColor.GOLD + player2.getName() + ChatColor.GREEN + " gamemode to " + ChatColor.GOLD + player2.getGameMode());
-            player2.setGameMode(GameMode.SPECTATOR);
         }
         return true;
     }
