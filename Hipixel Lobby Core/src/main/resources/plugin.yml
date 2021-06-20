@@ -1,23 +1,14 @@
-name: UwUAnticheat
-main: notthatuwu.uwuac.Main
+name: HipixelCore
+main: notthatuwu.hipixel.core.main
 version: 0.0.1
 author: NotThatUwU
 
 commands:
-  uwuac:
-    description: Basic command for AC
+  hipixelcore:
+    description: Commands
     usage: /<command>
 
 permissions:
-  uwuac.bypass:
-    description: Anticheat does not checks you
-    default: op
-  uwuac.debug:
-    description: AntiCheat can send debug msgs to the player
-    default: op
-  uwuac.alerts:
-    description: AntiCheat can send alerts to the player
-    default: op
-  uwuac.cmd:
-    description: Allows one to access help menu and GUI
+  hipixelcore.gamemodes:
+    description: Change Gamemode permissions
     default: op
