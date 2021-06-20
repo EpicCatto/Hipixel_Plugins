@@ -6,6 +6,7 @@ import com.comphenix.protocol.events.PacketListener;
 import notthatuwu.hipixel.core.command.CommandsLoader;
 import notthatuwu.hipixel.core.packets.PlayClientTabComplete;
 import notthatuwu.hipixel.core.scorebord.LobbyScoreboard;
+import notthatuwu.hipixel.core.tablist.LobbyTabList;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
@@ -33,9 +34,15 @@ public class Main extends JavaPlugin implements Listener {
         //Scoreborad
         getServer().getPluginManager().registerEvents(new LobbyScoreboard(), this);
 
+        //TabList
+        LobbyTabList tabList = new LobbyTabList();
+        tabList.drawTabList();
+
         //Anti Plugin Leak
         getServer().getPluginManager().registerEvents(this, this);
         ProtocolLibrary.getProtocolManager().addPacketListener((PacketListener)new PlayClientTabComplete((Plugin)this, new PacketType[] { PacketType.Play.Client.TAB_COMPLETE }));
+
+        //Lmao
         log.info("Core Loaded");
         super.onEnable();
     }

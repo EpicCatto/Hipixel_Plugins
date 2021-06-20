@@ -15,12 +15,9 @@ import static notthatuwu.hipixel.core.utils.ChatUtil.translateColor;
 
 public class LobbyScoreboard implements Listener {
 
-    ScoreboardManager manager = Bukkit.getScoreboardManager();
-    final Scoreboard board = manager.getNewScoreboard();
-    final Objective objective = board.registerNewObjective("test", "dummy");
-
     @EventHandler
     public void PlayerJoin(PlayerJoinEvent e) {
+
         final Player p = e.getPlayer();
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.instance, new Runnable() {
             public void run() {
@@ -42,6 +39,7 @@ public class LobbyScoreboard implements Listener {
                 score4.setScore(6);
                 p.setScoreboard(board);
             }
-        }, 0, 20 * 10);
+        }, 0, 40);
+
     }
 }
