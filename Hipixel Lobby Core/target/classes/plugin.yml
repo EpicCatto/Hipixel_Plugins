@@ -1,0 +1,14 @@
+name: HipixelCore
+main: notthatuwu.hipixel.core.main
+version: 0.0.1
+author: NotThatUwU
+
+commands:
+  hipixelcore:
+    description: Commands
+    usage: /<command>
+
+permissions:
+  hipixelcore.gamemodes:
+    description: Change Gamemode permissions
+    default: op
