@@ -1,6 +1,6 @@
 package notthatuwu.hipixel.core;
 
-import notthatuwu.hipixel.core.command.CommandManager;
+import notthatuwu.hipixel.core.command.CommandsLoader;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -10,13 +10,14 @@ public class Main extends JavaPlugin implements Listener {
 
     public static Main instance;
     public final Logger log = getLogger();
-    public CommandManager command;
 
     @Override
     public void onEnable() {
         instance = this;
         log.info("Core Loaded");
-        command = new CommandManager(this);
+        CommandsLoader commandsLoader = new CommandsLoader();
+        commandsLoader.loadCommand(this);
+        //getServer().getPluginCommand(getDescription().getCommands().keySet().toArray()[0].toString()).setExecutor(new CommandGamemodeS());
         super.onEnable();
     }
 }

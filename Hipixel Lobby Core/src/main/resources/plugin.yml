@@ -1,14 +1,39 @@
 name: HipixelCore
-main: notthatuwu.hipixel.core.main
+main: notthatuwu.hipixel.core.Main
 version: 0.0.1
 author: NotThatUwU
 
 commands:
-  hipixelcore:
-    description: Commands
-    usage: /<command>
+
+  gamemode:
+    description: change gamemodes
+    aliases: [ gm ]
+    usage: /<command> <survival|creative|adventure|spectator> [player]
+
+  creative:
+    description: change gamemodes
+    aliases: [gmc]
+    usage: /<command> [player]
+
+  survival:
+    description: change gamemodes
+    aliases: [gms]
+    usage: /<command> [player]
+
+  adventure:
+    description: change gamemodes
+    aliases: [gma]
+    usage: /<command> [player]
+
+  spectator:
+    description: change gamemodes
+    aliases: [gmsp]
+    usage: /<command> [player]
 
 permissions:
-  hipixelcore.gamemodes:
+  hipixelcore.gamemodes.creative:
+    description: Change Gamemode permissions
+    default: op
+  hipixelcore.gamemodes.creative.other:
     description: Change Gamemode permissions
     default: op
