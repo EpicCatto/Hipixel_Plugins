@@ -25,7 +25,7 @@ public class CommandSpeed implements CommandExecutor {
                     return true;
                 }
                 if ((player.hasPermission("hipixelcore.speed"))) {
-                    if (speed < -1 || speed > 5) {
+                    if (speed < 0 || speed > 5) {
                         player.sendMessage(ChatColor.RED + "Speed can't be less than 0 or more than 5");
                     } else {
                         player.setFlySpeed((float) (speed / 5f));

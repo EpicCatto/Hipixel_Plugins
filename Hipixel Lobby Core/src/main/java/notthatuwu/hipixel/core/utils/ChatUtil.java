@@ -52,10 +52,53 @@ public class ChatUtil {
         return formattedRole;
     }
 
+    public static String teamFinder(String role){
+        String formattedRole = null;
+        if (role.equalsIgnoreCase("default")){
+            formattedRole = "12default";
+        }else
+        if (role.equalsIgnoreCase("vip")){
+            formattedRole = "11vip";
+        }else
+        if (role.equalsIgnoreCase("vip+")){
+            formattedRole = "10vip";
+        }else
+        if (role.equalsIgnoreCase("mvp")){
+            formattedRole = "09mvp";
+        }else
+        if (role.equalsIgnoreCase("mvp+")){
+            formattedRole = "08mvp+";
+        }else
+        if (role.equalsIgnoreCase("mvp++")){
+            formattedRole = "07mvp++";
+        }else
+        if (role.equalsIgnoreCase("youtube")){
+            formattedRole = "06youtube";
+        }else
+        if (role.equalsIgnoreCase("pig+++")){
+            formattedRole = "05pig+++";
+        }else
+        if (role.equalsIgnoreCase("helper")){
+            formattedRole = "04helper";
+        }else
+        if (role.equalsIgnoreCase("mod")){
+            formattedRole = "03mod";
+        }else
+        if (role.equalsIgnoreCase("admin")){
+            formattedRole = "02admin";
+        }else
+        if (role.equalsIgnoreCase("owner")){
+            formattedRole = "01owner";
+        }else{
+            formattedRole = "Not Found!";
+        }
+        return formattedRole;
+    }
+
     public static String formatRoleLmao(String role){
         String formattedRole = null;
         if (role.equalsIgnoreCase("default")){
-            formattedRole = "";
+            formattedRole = "&7";
         }
         if (role.equalsIgnoreCase("vip")){
             formattedRole = "[&aVIP] ";
