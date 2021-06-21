@@ -78,21 +78,23 @@ public class LobbyTabList implements Listener {
     }
 
     public void setHeaderAndFooter(Player player) {
-        try {
-            Object headerJson = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + ChatColor.AQUA + "You are playing on " + ChatColor.YELLOW + ChatColor.BOLD +  "HIPIXEL.XYZ\"}");
-            Object footerJson = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + ChatColor.GREEN + "Ranks, Boosters & MORE! " + ChatColor.AQUA +  "store.hipixel.xyz\"}");
-            Object packet = getNMSClass("PacketPlayOutPlayerListHeaderFooter").getConstructor(getNMSClass("IChatBaseComponent")).newInstance(headerJson);
+        if (player.getWorld().getName().equals("world")) {
+            try {
+                Object headerJson = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + ChatColor.AQUA + "You are playing on " + ChatColor.YELLOW + ChatColor.BOLD + "HIPIXEL.XYZ\"}");
+                Object footerJson = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + ChatColor.GREEN + "Ranks, Boosters & MORE! " + ChatColor.AQUA + "store.hipixel.xyz\"}");
+                Object packet = getNMSClass("PacketPlayOutPlayerListHeaderFooter").getConstructor(getNMSClass("IChatBaseComponent")).newInstance(headerJson);
 
-            Field footerField = packet.getClass().getDeclaredField("b");
-            footerField.setAccessible(true);
-            footerField.set(packet, footerJson);
+                Field footerField = packet.getClass().getDeclaredField("b");
+                footerField.setAccessible(true);
+                footerField.set(packet, footerJson);
 
-            Object entityPlayer = player.getClass().getMethod("getHandle").invoke(player);
-            Object playerConnection = entityPlayer.getClass().getField("playerConnection").get(entityPlayer);
+                Object entityPlayer = player.getClass().getMethod("getHandle").invoke(player);
+                Object playerConnection = entityPlayer.getClass().getField("playerConnection").get(entityPlayer);
 
-            playerConnection.getClass().getMethod("sendPacket", getNMSClass("Packet")).invoke(playerConnection, packet);
-        } catch (IllegalArgumentException | NoSuchMethodException | SecurityException | IllegalAccessException | InvocationTargetException | InstantiationException | NoSuchFieldException | ClassNotFoundException e) {
-            e.printStackTrace();
+                playerConnection.getClass().getMethod("sendPacket", getNMSClass("Packet")).invoke(playerConnection, packet);
+            } catch (IllegalArgumentException | NoSuchMethodException | SecurityException | IllegalAccessException | InvocationTargetException | InstantiationException | NoSuchFieldException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 

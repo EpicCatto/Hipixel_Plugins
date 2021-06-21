@@ -5,9 +5,12 @@ import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketListener;
 import notthatuwu.hipixel.core.chat.ChatFormatting;
 import notthatuwu.hipixel.core.command.CommandsLoader;
+import notthatuwu.hipixel.core.items.JoinItems;
+import notthatuwu.hipixel.core.items.gui.GameSelectorGUI;
 import notthatuwu.hipixel.core.packets.PlayClientTabComplete;
 import notthatuwu.hipixel.core.scorebord.LobbyScoreboard;
 import notthatuwu.hipixel.core.tablist.LobbyTabList;
+import notthatuwu.hipixel.core.utils.BungeeChannelApi;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
@@ -32,6 +35,10 @@ public class Main extends JavaPlugin implements Listener {
         instance = this;
         CommandsLoader commandsLoader = new CommandsLoader();
         commandsLoader.loadCommand(this);
+
+        //Connect to the bungeecord
+        BungeeChannelApi api = BungeeChannelApi.of(this); // this = Plugin instance.
+
         //Scoreborad
         getServer().getPluginManager().registerEvents(new LobbyScoreboard(), this);
 
@@ -47,6 +54,11 @@ public class Main extends JavaPlugin implements Listener {
             //e.printStackTrace();
         }
         getServer().getPluginManager().registerEvents(new LobbyTabList(), this);
+
+        //CustomGui And JoinItem
+        getServer().getPluginManager().registerEvents(new GameSelectorGUI(), this);
+        JoinItems.init();
+        getServer().getPluginManager().registerEvents(new JoinItems(), this);
 
         //Anti Plugin Leak
         getServer().getPluginManager().registerEvents(this, this);
