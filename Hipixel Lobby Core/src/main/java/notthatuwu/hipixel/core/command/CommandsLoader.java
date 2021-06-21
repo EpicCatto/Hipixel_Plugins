@@ -14,5 +14,8 @@ public class CommandsLoader{
         plugin.getCommand("creative").setExecutor(new CommandGamemodeC());
         plugin.getCommand("adventure").setExecutor(new CommandGamemodeA());
         plugin.getCommand("spectator").setExecutor(new CommandGamemodeSP());
+
+        plugin.getCommand("fly").setExecutor(new CommandFly());
+        plugin.getCommand("speed").setExecutor(new CommandSpeed());
     }
 }

@@ -52,6 +52,89 @@ public class ChatUtil {
         return formattedRole;
     }
 
+    public static String formatRoleLmao(String role){
+        String formattedRole = null;
+        if (role.equalsIgnoreCase("default")){
+            formattedRole = "";
+        }
+        if (role.equalsIgnoreCase("vip")){
+            formattedRole = "[&aVIP] ";
+        }
+        if (role.equalsIgnoreCase("vip+")){
+            formattedRole = "[&aVIP&e+&a] ";
+        }
+        if (role.equalsIgnoreCase("mvp")){
+            formattedRole = "[&bMVP] ";
+        }
+        if (role.equalsIgnoreCase("mvp+")){
+            formattedRole = "[&bMVP&e+&b] ";
+        }
+        if (role.equalsIgnoreCase("mvp++")){
+            formattedRole = "[&bMVP&e++&b] ";
+        }
+        if (role.equalsIgnoreCase("youtube")){
+            formattedRole = "[&cYOUTUBE] ";
+        }
+        if (role.equalsIgnoreCase("pig+++")){
+            formattedRole = "[&dPIG&b+++&d] ";
+        }
+        if (role.equalsIgnoreCase("helper")){
+            formattedRole = "[&9HELPER] ";
+        }
+        if (role.equalsIgnoreCase("mod")){
+            formattedRole = "[&2MOD] ";
+        }
+        if (role.equalsIgnoreCase("admin")){
+            formattedRole = "[&cADMIN] ";
+        }
+        if (role.equalsIgnoreCase("owner")){
+            formattedRole = "[&cOWNER] ";
+        }
+        return formattedRole;
+    }
+
+    public static String roleNameColor(String role){
+        String formattedRole = null;
+        if (role.equalsIgnoreCase("default")){
+            formattedRole = "&7";
+        }
+        if (role.equalsIgnoreCase("vip")){
+            formattedRole = "&a";
+        }
+        if (role.equalsIgnoreCase("vip+")){
+            formattedRole = "&a";
+        }
+        if (role.equalsIgnoreCase("mvp")){
+            formattedRole = "&b";
+        }
+        if (role.equalsIgnoreCase("mvp+")){
+            formattedRole = "&b";
+        }
+        if (role.equalsIgnoreCase("mvp++")){
+            formattedRole = "&b";
+        }
+        if (role.equalsIgnoreCase("youtube")){
+            formattedRole = "&c";
+        }
+        if (role.equalsIgnoreCase("pig+++")){
+            formattedRole = "&d";
+        }
+        if (role.equalsIgnoreCase("helper")){
+            formattedRole = "&9";
+        }
+        if (role.equalsIgnoreCase("mod")){
+            formattedRole = "&2";
+        }
+        if (role.equalsIgnoreCase("admin")){
+            formattedRole = "&c";
+        }
+        if (role.equalsIgnoreCase("owner")){
+            formattedRole = "&c";
+        }
+        return formattedRole;
+    }
+
+
     public static String placeholders(Player player, String content) {
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI") &&
                 PlaceholderAPI.containsPlaceholders(content))

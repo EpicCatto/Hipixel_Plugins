@@ -2,6 +2,7 @@ package notthatuwu.hipixel.core.scorebord;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import notthatuwu.hipixel.core.Main;
+import notthatuwu.hipixel.core.tablist.LobbyTabList;
 import notthatuwu.hipixel.core.utils.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -18,6 +19,7 @@ public class LobbyScoreboard implements Listener {
 
     @EventHandler
     public void PlayerJoin(PlayerJoinEvent e) {
+        LobbyTabList tabList = new LobbyTabList();
 
         final Player p = e.getPlayer();
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.instance, new Runnable() {

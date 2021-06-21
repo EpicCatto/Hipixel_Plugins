@@ -17,7 +17,6 @@ public class CommandGamemode implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "Sorry buddy but seem like you don't have permission to do that.");
             return true;
         }else {
-
             if (args.length != 0) {
                 if (args.length == 1) {
                     Player player = (Player) sender;
@@ -59,11 +58,11 @@ public class CommandGamemode implements CommandExecutor {
                             sender.sendMessage(ChatColor.GREEN + "Successfully change " + ChatColor.GOLD + player.getName() + ChatColor.GREEN + " gamemode to " + ChatColor.GOLD + player.getGameMode());
                         }
                     } else {
-                        player.sendMessage(ChatColor.RED + "Sorry buddy but seem like you don't have permission to do that.");
+                        sender.sendMessage(ChatColor.RED + "Sorry buddy but seem like you don't have permission to do that.");
                     }
                 }
             } else {
-                sender.sendMessage(ChatColor.GREEN + "Usage: /gamemode <mode> <player>");
+                sender.sendMessage(ChatColor.RED + "Usage: /gamemode <mode> <player>");
             }
         }
         return true;

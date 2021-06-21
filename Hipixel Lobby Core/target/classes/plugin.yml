@@ -31,6 +31,14 @@ commands:
     aliases: [gmsp]
     usage: /<command> [player]
 
+  fly:
+    description: fly
+    usage: /<command> [player]
+
+  speed:
+    description: speed
+    usage: /<command> [value]
+
 permissions:
   hipixelcore.gamemodes:
     description: Change Gamemode permissions
@@ -40,4 +48,16 @@ permissions:
     default: op
   hipixelcore.pluginhider.bypass:
     description: Make u able to see plugins
+    default: op
+  hipixelcore.fly:
+    description: Make u Fly
+    default: op
+  hipixelcore.fly.other:
+    description: other ppl Fly
+    default: op
+  hipixelcore.speed:
+    description: Fly speed
+    default: op
+  hipixelcore.chatcolor:
+    description: Color
     default: op

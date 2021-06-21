@@ -3,6 +3,7 @@ package notthatuwu.hipixel.core;
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketListener;
+import notthatuwu.hipixel.core.chat.ChatFormatting;
 import notthatuwu.hipixel.core.command.CommandsLoader;
 import notthatuwu.hipixel.core.packets.PlayClientTabComplete;
 import notthatuwu.hipixel.core.scorebord.LobbyScoreboard;
@@ -12,6 +13,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
@@ -30,18 +32,19 @@ public class Main extends JavaPlugin implements Listener {
         instance = this;
         CommandsLoader commandsLoader = new CommandsLoader();
         commandsLoader.loadCommand(this);
-
         //Scoreborad
         getServer().getPluginManager().registerEvents(new LobbyScoreboard(), this);
 
+        //ChatFormatting
+        getServer().getPluginManager().registerEvents(new ChatFormatting(), this);
+
         //TabList
-        LobbyTabList tabList = new LobbyTabList();
-        tabList.drawTabList();
+        new LobbyTabList();
+        getServer().getPluginManager().registerEvents(new LobbyTabList(), this);
 
         //Anti Plugin Leak
         getServer().getPluginManager().registerEvents(this, this);
         ProtocolLibrary.getProtocolManager().addPacketListener((PacketListener)new PlayClientTabComplete((Plugin)this, new PacketType[] { PacketType.Play.Client.TAB_COMPLETE }));
-
         //Lmao
         log.info("Core Loaded");
         super.onEnable();
@@ -74,5 +77,10 @@ public class Main extends JavaPlugin implements Listener {
             + "\n" + ChatColor.GOLD + "You maybe find what are you looking there."
             + "\n" + ChatColor.GREEN + "----------------------------------------------" + "\n ");
         }
+    }
+    @EventHandler
+    public void onWorldChange(PlayerChangedWorldEvent e) {
+        e.getPlayer().setAllowFlight(false);
+        e.getPlayer().setFlying(false);
     }
 }
