@@ -34,7 +34,7 @@ public class LobbyTabList implements Listener {
 
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent e) {
+    public void playerJoin(PlayerJoinEvent e) {
         setHeaderAndFooter(e.getPlayer());
         (new BukkitRunnable() {
             public void run() {

@@ -41,7 +41,11 @@ public class Main extends JavaPlugin implements Listener {
         //TabList
         new LobbyTabList();
         LobbyTabList tab = new LobbyTabList();
-        tab.registerRoles();
+        try{
+            tab.registerRoles();
+        }catch (Exception e){
+            //e.printStackTrace();
+        }
         getServer().getPluginManager().registerEvents(new LobbyTabList(), this);
 
         //Anti Plugin Leak
