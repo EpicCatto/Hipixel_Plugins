@@ -3,6 +3,8 @@ package notthatuwu.hipixel.core;
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketListener;
+import com.google.common.io.ByteArrayDataInput;
+import com.google.common.io.ByteStreams;
 import notthatuwu.hipixel.core.chat.ChatFormatting;
 import notthatuwu.hipixel.core.command.CommandsLoader;
 import notthatuwu.hipixel.core.items.JoinItems;
@@ -13,6 +15,7 @@ import notthatuwu.hipixel.core.tablist.LobbyTabList;
 import notthatuwu.hipixel.core.utils.BungeeChannelApi;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -21,10 +24,12 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.messaging.PluginMessageListener;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.logging.Logger;
 
-public class Main extends JavaPlugin implements Listener {
+public class Main extends JavaPlugin implements Listener, PluginMessageListener {
 
     public static Main instance;
     public final Logger log = getLogger();
@@ -38,6 +43,9 @@ public class Main extends JavaPlugin implements Listener {
 
         //Connect to the bungeecord
         BungeeChannelApi api = BungeeChannelApi.of(this); // this = Plugin instance.
+
+        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 
         //Scoreborad
         getServer().getPluginManager().registerEvents(new LobbyScoreboard(), this);
@@ -100,5 +108,15 @@ public class Main extends JavaPlugin implements Listener {
     public void onWorldChange(PlayerChangedWorldEvent e) {
         e.getPlayer().setAllowFlight(false);
         e.getPlayer().setFlying(false);
+    }
+
+    @Override
+    public void onPluginMessageReceived(String channel, Player player, byte[] message) {
+        if (!channel.equals("BungeeCord")) {
+            return;
+        }
+        ByteArrayDataInput in = ByteStreams.newDataInput(message);
+
+
     }
 }

@@ -1,5 +1,6 @@
 package notthatuwu.hipixel.core.utils;
 
+import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import notthatuwu.hipixel.core.Main;
@@ -17,4 +18,6 @@ public class BungeecordUtil {
 
         player.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
     }
+
+
 }

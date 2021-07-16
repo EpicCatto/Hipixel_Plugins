@@ -39,6 +39,10 @@ commands:
     description: speed
     usage: /<command> [value]
 
+  selectgames:
+    description: selectgames
+    usage: /<command>
+
 permissions:
   hipixelcore.gamemodes:
     description: Change Gamemode permissions

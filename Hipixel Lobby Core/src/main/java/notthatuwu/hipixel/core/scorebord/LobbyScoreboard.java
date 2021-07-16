@@ -19,6 +19,7 @@ public class LobbyScoreboard implements Listener {
     @EventHandler
     public void PlayerJoin(PlayerJoinEvent e) {
         if (e.getPlayer().getWorld().getName().equals("world")) {
+            if(Main.instance.getServer().getPluginManager().isPluginEnabled("BedWars1058"))return;
             final Player p = e.getPlayer();
             Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.instance, new Runnable() {
                 public void run() {

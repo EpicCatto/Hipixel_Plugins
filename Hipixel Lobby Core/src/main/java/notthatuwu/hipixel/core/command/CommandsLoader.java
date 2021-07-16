@@ -17,5 +17,6 @@ public class CommandsLoader{
 
         plugin.getCommand("fly").setExecutor(new CommandFly());
         plugin.getCommand("speed").setExecutor(new CommandSpeed());
+        plugin.getCommand("selectgames").setExecutor(new CommandGamesSelector());
     }
 }
